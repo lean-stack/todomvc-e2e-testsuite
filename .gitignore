@@ -1,2 +1,6 @@
 # Yarn/NPM deps
 /node_modules/
+
+# Cypress report artefacts
+/cypress/screenshots
+/cypress/videos
