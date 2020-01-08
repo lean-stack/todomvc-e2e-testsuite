@@ -309,7 +309,7 @@ describe('React TodoMVC', () => {
       cy.get('@todos').eq(1).find('.edit').should('have.focus');
     });
 
-    it('should trim entered text', () => {
+    it.only('should trim entered text', () => {
       cy.get('@todos').eq(1).find('label').dblclick();
 
       cy
@@ -318,7 +318,7 @@ describe('React TodoMVC', () => {
         .find('.edit')
         .type('{selectall}{backspace}    E2E Testing with Cypress    {enter}');
 
-        cy.get('@todos').eq(1).find('label').should('contain.text', 'E2E Testing with Cypress');
+        cy.get('@todos').eq(1).find('label').should('have.text', 'E2E Testing with Cypress');
     });
 
     it('should cancel edits on escape', () => {
