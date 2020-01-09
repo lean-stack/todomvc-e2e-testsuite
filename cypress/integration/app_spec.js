@@ -309,7 +309,7 @@ describe('React TodoMVC', () => {
       cy.get('@todos').eq(1).find('.edit').should('have.focus');
     });
 
-    it.only('should trim entered text', () => {
+    it('should trim entered text', () => {
       cy.get('@todos').eq(1).find('label').dblclick();
 
       cy
