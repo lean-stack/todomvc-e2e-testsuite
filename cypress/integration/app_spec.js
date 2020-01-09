@@ -3,7 +3,8 @@ describe('React TodoMVC', () => {
   const todoFixtures = [
     'Unit Testing',
     'E2E Testing',
-    'Test Coverage'
+    'Test Coverage',
+    'Continous Integration'
   ];
 
   const selectors = {
@@ -369,6 +370,7 @@ describe('React TodoMVC', () => {
       cy.createTodo(todoFixtures[0]);
       cy.createTodo(todoFixtures[1]);
       cy.createTodo(todoFixtures[2]);
+      cy.createTodo(todoFixtures[3]);
       cy.get(selectors.todoItems).as('todos');
     });
 
@@ -379,21 +381,23 @@ describe('React TodoMVC', () => {
 
     it('should remove completed items when clicked', () => {
       cy.get('@todos').eq(0).find('.toggle').check();
-      cy.get('@todos').eq(2).find('.toggle').check();
+      cy.get('@todos').eq(1).find('.toggle').check();
+      cy.get('@todos').eq(3).find('.toggle').check();
       cy.get(selectors.clearCompleted).click();
       cy.get('@todos').should('have.length', 1);
-      cy.get('@todos').eq(0).should('contain', todoFixtures[1]);
+      cy.get('@todos').eq(0).should('contain', todoFixtures[2]);
     });
 
     it('should persist items when removed this way', () => {
       cy.get('@todos').eq(0).find('.toggle').check();
-      cy.get('@todos').eq(2).find('.toggle').check();
+      cy.get('@todos').eq(1).find('.toggle').check();
+      cy.get('@todos').eq(3).find('.toggle').check();
       cy.get(selectors.clearCompleted).click();
       cy.get('@todos').should('have.length', 1);
-      cy.get('@todos').eq(0).should('contain', todoFixtures[1]);
+      cy.get('@todos').eq(0).should('contain', todoFixtures[2]);
       cy.reload();
       cy.get('@todos').should('have.length', 1);
-      cy.get('@todos').eq(0).should('contain', todoFixtures[1]);
+      cy.get('@todos').eq(0).should('contain', todoFixtures[2]);
     });
 
     it('should be hidden when there are no items that are completed', () => {
