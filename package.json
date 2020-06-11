@@ -1,6 +1,12 @@
 {
   "name": "todomvc-e2e-cy-testsuite",
-  "private": true,
+  "version": "1.0.0",
+  "license": "MIT",
+  "description": "E2E Testsuite for http://todomvc.com Implementations with https://www.cypress.io/",
+  "author": {
+    "name": "Michael Alt",
+    "url": "https://lean-stack.de"
+  },
   "bin": {
     "todomvc-e2e-cy-testsuite": "cli.js"
   },
