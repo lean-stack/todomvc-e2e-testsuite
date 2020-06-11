@@ -52,7 +52,7 @@ describe('React TodoMVC', () => {
 
     it('should clear text input field when an item is added', () => {
       cy.createTodo(todoFixtures[0]);
-      cy.get(selectors.newTodo).should('have.text', '')
+      cy.get(selectors.newTodo).should('have.value', '')
     });
 
     it('should trim text input', () => {
