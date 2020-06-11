@@ -8,6 +8,7 @@ require('yargs')
 
   .command('headless', 'start a headless testsuite', {}, argv => {
     cypress.run({
+      project: __dirname,
       config: {
         baseUrl: `http://localhost:${argv.port || 4200}`
       }
@@ -15,6 +16,7 @@ require('yargs')
   })
   .command('ui', 'start a ui testsuite', {}, (argv) => {
     cypress.open({
+      project: __dirname,
       config: {
         baseUrl: `http://localhost:${argv.port || 4200}`
       }
