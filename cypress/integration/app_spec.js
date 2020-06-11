@@ -11,6 +11,7 @@ describe('React TodoMVC', () => {
     newTodo: '.new-todo',
     todoList: '.todo-list',
     todoItems: '.todo-list li',
+    lastTodo: '.todo-list li:last-child()',
     count: 'span.todo-count',
     main: '.main',
     footer: '.footer',
@@ -213,25 +214,25 @@ describe('React TodoMVC', () => {
       cy.createTodo(todoFixtures[0]);
       cy.createTodo(todoFixtures[1]);
 
-      cy.get(selectors.todoItems).last().find('.toggle').check();
+      cy.get(selectors.lastTodo).find('.toggle').check();
       cy.reload();
-      cy.get(selectors.todoItems).last().should('have.class', 'completed');
+      cy.get(selectors.lastTodo).should('have.class', 'completed');
 
-      cy.get(selectors.todoItems).last().find('.toggle').uncheck();
+      cy.get(selectors.lastTodo).find('.toggle').uncheck();
       cy.reload();
-      cy.get(selectors.todoItems).last().should('not.have.class', 'completed');
+      cy.get(selectors.lastTodo).should('not.have.class', 'completed');
     });
 
     it('should persist editing of items', () => {
       cy.createTodo(todoFixtures[0]);
       cy.createTodo(todoFixtures[1]);
 
-      cy.get(selectors.todoItems).last().find('label').dblclick();
-      cy.get(selectors.todoItems).last().find('.edit').clear()
+      cy.get(selectors.lastTodo).find('label').dblclick();
+      cy.get(selectors.lastTodo).last().find('.edit').clear()
         .type('E2E Testing with Cypress{enter}');
       cy.reload();
 
-      cy.get(selectors.todoItems).last().find('label').should('contain.text', 'E2E Testing with Cypress');
+      cy.contains('.todo-list li:last-child() label', 'E2E Testing with Cypress');
     });
 
     it('should persist edits commited via blur', function () {
@@ -245,7 +246,7 @@ describe('React TodoMVC', () => {
         .blur();
       cy.reload();
 
-      cy.get(selectors.todoItems).last().find('label').should('contain.text', 'E2E Testing with Cypress');
+      cy.contains('.todo-list li:last-child() label', 'E2E Testing with Cypress');
     });
 
     it('should persist deleting items', () => {
@@ -269,7 +270,7 @@ describe('React TodoMVC', () => {
 
       cy.get(selectors.todoItems).should('have.length', 1);
 
-      cy.get(selectors.todoItems).first().find('label').dblclick();
+      cy.contains('.todo-list li:last-child() label', 'E2E Testing').dblclick();
       cy.get(selectors.todoItems)
         .find('.edit').clear().blur();
       cy.reload();
