@@ -9,7 +9,7 @@
     "headless": "cypress run"
   },
   "dependencies": {
-    "cypress": "^4.1.0",
+    "cypress": "^4.8.0",
     "yargs": "^15.3.1"
   }
 }
