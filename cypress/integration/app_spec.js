@@ -366,7 +366,7 @@ describe('React TodoMVC', () => {
 
   });
 
-  context.only('Clear completed button', () => {
+  context('Clear completed button', () => {
     beforeEach(() => {
       cy.createTodo(todoFixtures[0]);
       cy.createTodo(todoFixtures[1]);
