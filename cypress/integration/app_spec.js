@@ -366,7 +366,7 @@ describe('React TodoMVC', () => {
 
   });
 
-  context('Clear completed button', () => {
+  context.only('Clear completed button', () => {
     beforeEach(() => {
       cy.createTodo(todoFixtures[0]);
       cy.createTodo(todoFixtures[1]);
@@ -398,7 +398,7 @@ describe('React TodoMVC', () => {
       cy.get('@todos').eq(0).should('contain', todoFixtures[2]);
       cy.reload();
       cy.get('@todos').should('have.length', 1);
-      cy.get('@todos').eq(0).should('contain', todoFixtures[2]);
+      cy.contains('.todo-list li:last-child() label', todoFixtures[2]);
     });
 
     it('should be hidden when there are no items that are completed', () => {
