@@ -1,6 +1,6 @@
 {
   "name": "todomvc-e2e-cy-testsuite",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "license": "MIT",
   "description": "E2E Testsuite for http://todomvc.com Implementations with https://www.cypress.io/",
   "author": {
